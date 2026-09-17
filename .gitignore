@@ -1,0 +1,39 @@
+# --- Node / Frontend ---
+node_modules/
+dist/
+build/
+.vite/
+*.local
+
+# --- .NET / Backend ---
+bin/
+obj/
+*.user
+*.suo
+appsettings.json
+appsettings.Development.json
+
+# --- Python / Parsing service ---
+__pycache__/
+*.pyc
+*.pyo
+venv/
+.venv/
+*.egg-info/
+
+# --- Environment / secrets ---
+.env
+.env.local
+*.env
+
+# --- Ollama / local models ---
+*.gguf
+
+# --- Uploaded statements (user data, never commit) ---
+*.pdf
+
+# --- OS / Editor ---
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
