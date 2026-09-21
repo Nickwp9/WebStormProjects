@@ -4,7 +4,7 @@ export const AppLayout: React.FC = () => {
   return (
     <div>
       <header>
-        
+
       </header>
       <Outlet />
     </div>
