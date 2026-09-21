@@ -1,0 +1,44 @@
+services:
+  postgres:
+    image: postgres:16
+    container_name: webstormprojects_postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: webstormprojects_user
+      POSTGRES_PASSWORD: webstormprojects_password
+      POSTGRES_DB: webstormprojects_db
+    ports:
+      - "5432:5432"
+    volumes:
+      - webstormprojects_pgdata:/var/lib/postgresql/data
+
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: webstormprojects_backend
+    restart: unless-stopped
+    ports:
+      - "5134:5134"
+    environment:
+      JWT_SECRET: ${JWT_SECRET}
+      AUTH_PEPPER: ${AUTH_PEPPER}
+      DEFAULT_CONNECTION: "Host=postgres;Port=5432;Database=webstormprojects_db;Username=webstormprojects_user;Password=webstormprojects_password"
+    depends_on:
+      - postgres
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: webstormprojects_frontend
+    restart: unless-stopped
+    ports:
+      - "5173:5173"
+    environment:
+      VITE_API_URL: http://localhost:5134
+    depends_on:
+      - backend
+
+volumes:
+  ledgr_pgdata:
