@@ -2,13 +2,18 @@ type ProductCardProps = {
   name: string;
   price: string;
   image: string;
+  flipImage?: boolean;
 };
 
-export const ProductCard: React.FC<ProductCardProps> = ({ name, price, image }) => {
+export const ProductCard: React.FC<ProductCardProps> = ({ name, price, image, flipImage }) => {
   return (
     <div className="bg-neutral-900 rounded-lg p-4 flex flex-col w-64 h-100">
       <div className="bg-neutral-800 rounded-md h-48 w-full mb-4">
-        <img src={image} alt={name} className="h-full w-full object-cover rounded-md" />
+        <img
+          src={image}
+          alt={name}
+          className={`h-full w-full object-cover rounded-md ${flipImage ? 'scale-x-[-1]' : ''}`}
+        />
       </div>
 
       <h3 className="text-[#f5f5f5] font-semibold text-lg">{name}</h3>
@@ -16,7 +21,6 @@ export const ProductCard: React.FC<ProductCardProps> = ({ name, price, image }) 
       <button className="mt-auto bg-[#b6ff00] text-black font-semibold py-2 rounded-md hover:opacity-90">
         Add to Cart
       </button>
-      
     </div>
   );
 };
