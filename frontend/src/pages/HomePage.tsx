@@ -8,7 +8,11 @@ export const HomePage: React.FC = () => {
         <source src={bannerVideo} type="video/mp4" />
       </video>
       <div className="relative z-10 h-full flex flex-col items-center justify-center text-center">
-        <ProductCard name = 'Air Max Crossovers' price = '120$' image = '../assets/hero.png'/>
+        <div className="flex flex-wrap gap-6 justify-start">
+  <ProductCard name = 'Air Max Crossovers' price = '120$' image = '../assets/hero.png'/>
+  <ProductCard name="..." price="..." image="..." />
+  {/* more cards */}
+</div>
       </div>
     </section>
   );
