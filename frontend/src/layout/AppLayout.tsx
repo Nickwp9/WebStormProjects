@@ -11,6 +11,9 @@ export const AppLayout: React.FC = () => {
         <nav className="flex gap-6">
           <Link to="/cart" className="text-[#f5f5f5] no-underline font-semibold hover:text-[#b6ff00]">Cart</Link>
         </nav>
+        
+        <Link to = "/login" className = "ml-auto">Login</Link>
+        <Link to = "/register" className = "">Sign Up</Link>
       </header>
       <Outlet />
     </div>
